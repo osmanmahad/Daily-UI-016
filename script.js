@@ -35,9 +35,10 @@ document.addEventListener("click", function (event) {
   }
 });
 
-var copyButton = document.getElementById("copy-button");
+var copyFactButton = document.getElementById("copy-fact-button");
 
-copyButton.addEventListener("click", function () {
+copyFactButton.addEventListener("click", function (event) {
+  event.stopPropagation();
   var factText = document.getElementById("fact").innerText;
   var tempInput = document.createElement("input");
   tempInput.style = "position: absolute; left: -1000px; top: -1000px";
@@ -45,6 +46,6 @@ copyButton.addEventListener("click", function () {
   document.body.appendChild(tempInput);
   tempInput.select();
   document.execCommand("copy");
-  alert("Fact copied to clipboard: " + factText);
   document.body.removeChild(tempInput);
+  alert("Fact copied to clipboard!");
 });
